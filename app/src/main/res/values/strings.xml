@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Text Manipulator</string>
+    <string name="welcome">Welcome!!</string>
+    <string name="title_activity_back__button__testing">Back_Button_Testing</string>
+    <string name="copyText">Copied</string>
+    <string name="doubleText">Doubled</string>
+    <string name="upText">Size Increased</string>
+    <string name="downText">Size Decreased</string>
+</resources>
