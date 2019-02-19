@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextWatcher;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,50 +27,14 @@ public class MainActivity extends AppCompatActivity {
     private Button mDoubleButton;
     private Button mUpButton;
     private Button mDownButton;
-    String answer;
+    String answer = "0sp";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         Toast.makeText(MainActivity.this, R.string.welcome, Toast.LENGTH_SHORT).show();
         setContentView(R.layout.activity_main);
-
-        inPut = (EditText) findViewById(R.id.type_something); //EditText ID
-        outPut = (TextView) findViewById(R.id.outcome_view); //TextView ID
-
-        String s1 = inPut.getText().toString();
-
-
-        mCopyButton = (Button) findViewById(R.id.copyText);
-        mCopyButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(MainActivity.this, R.string.copyText, Toast.LENGTH_SHORT).show();
-                outPut.setText(inPut.getText());
-                outPut.setText(inPut.getText());
-
-
-            }
-        });
-
-
-        mDoubleButton = (Button) findViewById(R.id.doubleText);
-        mDoubleButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(MainActivity.this, R.string.doubleText, Toast.LENGTH_SHORT).show();
-                outPut.setText(inPut.getText().toString());
-                final Button doubleButton = (Button) findViewById(R.id.doubleText);
-                doubleButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        doubleButton.getText().toString();
-                        inPut.setText(outPut.getText());
-
-                    }
-                });
-            }
-                });
 
 
         mUpButton = (Button) findViewById(R.id.upText);
@@ -114,7 +79,100 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+
+    public void copyText(View view) {
+        EditText inPut = (EditText) findViewById(R.id.type_something); //EditText ID
+        String s1 = inPut.getText().toString();
+        //outPut = (TextView) findViewById(R.id.outcome_view); //TextView ID
+        displayMessage(printOut(s1));
+        Toast.makeText(MainActivity.this, R.string.copyText, Toast.LENGTH_SHORT).show();
+
+    }
+
+    public void doubleText(View view) {
+        EditText inPut = (EditText) findViewById(R.id.type_something); //EditText ID
+        String s1 = inPut.getText().toString();
+        String it = answer + s1;
+        //Somehow I double the text in this method
+        displayMessage(printOut(it));
+        Toast.makeText(MainActivity.this, R.string.doubleText, Toast.LENGTH_SHORT).show();
+    }
+
+    public void upText(View view) {
+        EditText inPut = (EditText) findViewById(R.id.type_something); //EditText ID
+        //Somehow I double the text in this method
+        Toast.makeText(MainActivity.this, R.string.upText, Toast.LENGTH_SHORT).show();
+        String s1 = inPut.getText().toString();
+        displayMessage(sizeDown(s1));
+    }
+
+    public void downText(View view) {
+        EditText inPut = (EditText) findViewById(R.id.type_something); //EditText ID
+        String s1 = inPut.getText().toString();
+        //final int[] size = {20}; //textsize in XML
+        inPut.getTextSize();
+        //Somehow I double the text in this method
+        displayMessage(printOut(s1));
+        Toast.makeText(MainActivity.this, R.string.downText, Toast.LENGTH_SHORT).show();
+    }
+
+    private void displayMessage(String message) { //This isn't a method. it is the textview connected to the submit button
+        TextView priceTextView = (TextView) findViewById(R.id.outcome_view); //TextView
+        priceTextView.setText(message);
+    }
+
+    private String printOut(String theText) {
+        String twice = answer + theText;
+        twice += answer;
+        return twice;
+    }
+
+
+    public String sizeDown(String decrease) {
+        int it = 4;
+        String shrink = decrease + ;
+        return shrink;
+
+    }
+
+
+
+
+    }
 /*
+
+        /*mCopyButton = (Button) findViewById(R.id.copyText);
+        mCopyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(MainActivity.this, R.string.copyText, Toast.LENGTH_SHORT).show();
+                outPut.setText(inPut.getText());
+                outPut.setText(inPut.getText());
+
+
+            }
+        });
+
+
+        mDoubleButton = (Button) findViewById(R.id.doubleText);
+        mDoubleButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(MainActivity.this, R.string.doubleText, Toast.LENGTH_SHORT).show();
+                outPut.setText(inPut.getText().toString());
+                final Button doubleButton = (Button) findViewById(R.id.doubleText);
+                doubleButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        doubleButton.getText().toString();
+                        inPut.setText(outPut.getText());
+
+                    }
+                });
+            }
+                });
+
 
 
     public void copyText(View View) { //Prints EditText to the TextView
@@ -143,7 +201,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }*/
-}
 
 
 // public void upText (String outCome){
