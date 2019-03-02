@@ -60,15 +60,23 @@
             android:text="down"
             android:textSize="12sp" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
 
         <TextView
             android:id="@+id/outcome_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="24sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/download"/>
 
     </LinearLayout>
 

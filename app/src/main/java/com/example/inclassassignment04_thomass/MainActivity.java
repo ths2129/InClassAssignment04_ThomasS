@@ -1,5 +1,6 @@
 package com.example.inclassassignment04_thomass;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
+import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
 import static android.icu.lang.UCharacter.GraphemeClusterBreak.V;
 
 public class MainActivity extends AppCompatActivity {
@@ -31,30 +33,40 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Toast.makeText(MainActivity.this, R.string.welcome, Toast.LENGTH_SHORT).show();
+        Toast.makeText(MainActivity.this, R.string.welcome, Toast.LENGTH_LONG).show();
         setContentView(R.layout.activity_main);
-        inPut = (TextView) findViewById(R.id.type_something);
-        outPut = (TextView) findViewById(R.id.outcome_view);
+        inPut =  findViewById(R.id.type_something); // no need to cast
+        outPut = findViewById(R.id.outcome_view); // no need to cast
+        Toast.makeText(MainActivity.this, "BONJOUR", Toast.LENGTH_LONG).show();
+        Toast.makeText(MainActivity.this, "HOLA", Toast.LENGTH_LONG).show();
+
     }
 
     public void copyText(View view) {
         String num = inPut.getText().toString();
         outPut.setText(num);
+        Toast.makeText(MainActivity.this, "COPY", Toast.LENGTH_SHORT).show();
+
     }
 
     public void doubleText(View view) {
         String num = String.valueOf(inPut.getText()); //Converting the EditText into a value that can be added like an integer
         outPut.setText(num + num);
+        Toast.makeText(MainActivity.this, "DOUBLE", Toast.LENGTH_SHORT).show();
     }
 
     public void downText(View view) {
         textSize--;
         outPut.setTextSize(textSize);
+        Toast.makeText(MainActivity.this, "INCREASE", Toast.LENGTH_SHORT).show();
+
     }
 
     public void upText(View view) {
         textSize++;
         outPut.setTextSize(textSize);
+        Toast.makeText(MainActivity.this, "DECREASE", Toast.LENGTH_SHORT).show();
+
     }
 }
 
