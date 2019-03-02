@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.text.TextWatcher;
 import android.util.TypedValue;
 import android.view.View;
+import android.webkit.WebSettings;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -20,13 +21,10 @@ public class MainActivity extends AppCompatActivity {
     long digit;
     float fl;
     TextView display;
-    int num;
-    EditText inPut;
-    TextView outPut;
-    private Button mCopyButton;
-    private Button mDoubleButton;
-    private Button mUpButton;
-    private Button mDownButton;
+    int textSize = 0;
+    String num = "";
+    TextView inPut; // Global
+    TextView outPut; // GLobal
     String answer = "0sp";
 
     @Override
@@ -35,6 +33,41 @@ public class MainActivity extends AppCompatActivity {
 
         Toast.makeText(MainActivity.this, R.string.welcome, Toast.LENGTH_SHORT).show();
         setContentView(R.layout.activity_main);
+        inPut = (TextView) findViewById(R.id.type_something);
+        outPut = (TextView) findViewById(R.id.outcome_view);
+    }
+
+    public void copyText(View view) {
+        String num = inPut.getText().toString();
+        outPut.setText(num);
+    }
+
+    public void doubleText(View view) {
+        String num = String.valueOf(inPut.getText()); //Converting the EditText into a value that can be added like an integer
+        outPut.setText(num + num);
+    }
+
+    public void downText(View view) {
+        textSize--;
+        outPut.setTextSize(textSize);
+    }
+
+    public void upText(View view) {
+        textSize++;
+        outPut.setTextSize(textSize);
+    }
+}
+
+
+
+/*
+
+
+
+
+
+
+
 
 
         mUpButton = (Button) findViewById(R.id.upText);
@@ -81,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void copyText(View view) {
+    //public void copyText(View view) {
         EditText inPut = (EditText) findViewById(R.id.type_something); //EditText ID
         String s1 = inPut.getText().toString();
         //outPut = (TextView) findViewById(R.id.outcome_view); //TextView ID
@@ -90,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void doubleText(View view) {
+    //public void doubleText(View view) {
         EditText inPut = (EditText) findViewById(R.id.type_something); //EditText ID
         String s1 = inPut.getText().toString();
         String it = answer + s1;
@@ -107,7 +140,7 @@ public class MainActivity extends AppCompatActivity {
         displayMessage(sizeDown(s1));
     }
 
-    public void downText(View view) {
+    //public void downText(View view) {
         EditText inPut = (EditText) findViewById(R.id.type_something); //EditText ID
         String s1 = inPut.getText().toString();
         //final int[] size = {20}; //textsize in XML
@@ -137,12 +170,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
-
-    }
-/*
-
-        /*mCopyButton = (Button) findViewById(R.id.copyText);
+    mCopyButton = (Button) findViewById(R.id.copyText);
         mCopyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -200,7 +228,7 @@ public class MainActivity extends AppCompatActivity {
                 inPut.setTextSize(size[0] + 4);
             }
         });
-    }*/
+    }
 
 
 // public void upText (String outCome){
@@ -255,7 +283,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-/*
+
 
         if (savedInstanceState != null) {  // If app has never been opened before, than null
             savedApp = savedInstanceState.getString(savedApp);
@@ -290,4 +318,5 @@ public class MainActivity extends AppCompatActivity {
         }}
 
 
-        */
+
+*/
